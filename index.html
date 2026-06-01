@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Germophobes | Professional Pressure Washing – Charlotte, NC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0a0f1e;
+      --blue: #1a4b8c;
+      --accent: #2e9cca;
+      --light: #f4f8fc;
+      --white: #ffffff;
+      --gold: #f5c518;
+      --text: #2b2b2b;
+      --muted: #6b7280;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ── PREVIEW BANNER ── */
+    #preview-banner {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      font-size: 0.78rem;
+      padding: 7px 1rem;
+      letter-spacing: 0.04em;
+      position: relative;
+      z-index: 1000;
+    }
+    #preview-banner a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    #preview-banner a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 33px;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      padding: 1.1rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
+    }
+    nav.scrolled {
+      background: rgba(10, 15, 30, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-phone a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-phone a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 0.55rem 1.3rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+      letter-spacing: 0.05em !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: #1a7fa8 !important; color: var(--white) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=80');
+      background-size: cover;
+      background-position: center;
+      animation: slowZoom 18s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+    @keyframes slowZoom {
+      from { transform: scale(1); }
+      to   { transform: scale(1.12); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(8,14,30,0.82) 0%, rgba(10,30,60,0.65) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 1.5rem;
+      max-width: 820px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      border: 1px solid rgba(46,156,202,0.4);
+      padding: 0.35rem 1rem;
+      border-radius: 2px;
+    }
+    .hero-content h1 {
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.08;
+      margin-bottom: 1.3rem;
+      letter-spacing: -0.01em;
+    }
+    .hero-content h1 span { color: var(--accent); }
+    .hero-content p {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: rgba(255,255,255,0.8);
+      max-width: 580px;
+      margin: 0 auto 2.2rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 0.95rem 2.2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: #1a7fa8; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.5);
+      padding: 0.92rem 2.2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--accent); background: rgba(46,156,202,0.12); transform: translateY(-2px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid rgba(255,255,255,0.4);
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      transform: rotate(45deg);
+      animation: bounceDown 1.6s infinite;
+    }
+    @keyframes bounceDown {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(5px); }
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--navy);
+      padding: 3rem 2rem;
+    }
+    .trust-bar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      text-align: center;
+    }
+    .trust-stat {
+      border-right: 1px solid rgba(255,255,255,0.1);
+      padding: 0.5rem 1.5rem;
+    }
+    .trust-stat:last-child { border-right: none; }
+    .trust-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .trust-stat-label {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1160px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--light); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.6rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2.2rem 2rem;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      border-top: 3px solid var(--accent);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .service-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1.1rem;
+    }
+    .service-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.7rem;
+    }
+    .service-card p {
+      font-size: 0.93rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.4rem;
+    }
+    .service-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      font-family: 'DM Sans', sans-serif;
+      transition: color 0.2s;
+    }
+    .service-link:hover { color: var(--blue); }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .about-img-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+      border-radius: 8px;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: 2rem;
+      right: -1.5rem;
+      background: var(--accent);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(46,156,202,0.35);
+    }
+    .about-badge-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .about-badge-text {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+    .about-text .section-title { margin-bottom: 1.2rem; }
+    .about-text p {
+      font-size: 0.97rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.1rem;
+    }
+    .about-bullets {
+      list-style: none;
+      margin: 1.5rem 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .about-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.93rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .about-bullets li::before {
+      content: '✔';
+      color: var(--accent);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    /* ── REVIEWS ── */
+    #reviews { background: var(--navy); }
+    #reviews .section-title { color: var(--white); }
+    #reviews .section-tag { color: var(--accent); }
+    .reviews-note {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.38);
+      margin-top: -2.5rem;
+      margin-bottom: 3rem;
+      font-style: italic;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 2rem 1.8rem;
+      transition: background 0.25s;
+    }
+    .review-card:hover { background: rgba(255,255,255,0.09); }
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1.1rem;
+    }
+    .star { color: var(--gold); font-size: 1.1rem; }
+    .review-card blockquote {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 1.4rem;
+    }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .reviewer-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .reviewer-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .reviewer-loc {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--blue) 100%);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .cta-band p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 500px;
+      margin: 0 auto 2.2rem;
+      line-height: 1.65;
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--blue);
+      border: none;
+      padding: 1rem 2.5rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060b18;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-city {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .footer-phone a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .footer-phone a:hover { text-decoration: underline; }
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin: 1.5rem auto;
+      max-width: 300px;
+    }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-badge { right: 1rem; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 640px) {
+      .trust-bar-inner { grid-template-columns: 1fr; }
+      .trust-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1rem 0; }
+      .trust-stat:last-child { border-bottom: none; }
+      .about-img-wrap img { height: 320px; }
+      section { padding: 4rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preview Banner -->
+  <div id="preview-banner">
+    ✨ Free preview by North Star Digital — <a href="https://northstardigital.digital" target="_blank">northstardigital.digital</a>
+  </div>
+
+  <!-- Nav -->
+  <nav id="main-nav">
+    <div class="nav-logo">Germo<span>phobes</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li class="nav-phone"><a href="tel:8664746237">(866) 474-6237</a></li>
+      <li><a href="#" class="nav-cta" onclick="openQuote();return false;">Get Free Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Charlotte's Premier Pressure Washing</div>
+      <h1>Restore. Refresh.<br><span>Revitalize.</span></h1>
+      <p>Professional pressure washing services for homes and businesses throughout Charlotte, NC. We blast away years of grime, mold, and buildup — leaving every surface spotlessly clean.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="openQuote()">Get Your Free Quote</button>
+        <a href="tel:8664746237" class="btn-outline">(866) 474-6237</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-stat">
+        <div class="trust-stat-num">12+</div>
+        <div class="trust-stat-label">Years in Business</div>
+      </div>
+      <div class="trust-stat">
+        <div class="trust-stat-num">4,800+</div>
+        <div class="trust-stat-label">Jobs Completed</div>
+      </div>
+      <div class="trust-stat">
+        <div class="trust-stat-num">99%</div>
+        <div class="trust-stat-label">Customer Satisfaction</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Pressure Washing Services<br>Built for Charlotte</h2>
+      <p class="section-sub">From driveways to rooftops, Germophobes has the equipment and expertise to make every surface shine. No job is too big or too small.</p>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">🏠</div>
+          <h3>House Washing</h3>
+          <p>Soft-wash treatments that safely remove mold, mildew, algae, and oxidation from vinyl siding, stucco, brick, and painted exteriors — without damaging surfaces.</p>
+          <button class="service-link" onclick="openQuote()">Get a Quote →</button>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🚗</div>
+          <h3>Driveway & Concrete Cleaning</h3>
+          <p>High-pressure surface cleaning blasts oil stains, tire marks, and embedded dirt from concrete driveways, walkways, and garage floors. Results that look brand new.</p>
+          <button class="service-link" onclick="openQuote()">Get a Quote →</button>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🏢</div>
+          <h3>Commercial Pressure Washing</h3>
+          <p>Keep storefronts, parking lots, loading docks, and commercial buildings looking professional. We work around your schedule, including nights and weekends.</p>
+          <button class="service-link" onclick="openQuote()">Get a Quote →</button>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🌿</div>
+          <h3>Deck & Patio Restoration</h3>
+          <p>Restore your wood, composite, or stone deck and patio to its original beauty. We remove green algae, black mold, and years of weathering ahead of sealing or staining.</p>
+          <button class="service-link" onclick="openQuote()">Get a Quote →</button>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🏗️</div>
+          <h3>Roof Soft Washing</h3>
+          <p>Safely eliminate black streaks, lichen, and moss from asphalt shingles and tile roofs using our low-pressure, EPA-compliant soft-wash system — no damage, guaranteed.</p>
+          <button class="service-link" onclick="openQuote()">Get a Quote →</button>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🪟</div>
+          <h3>Fence & Gutter Cleaning</h3>
+          <p>Brighten vinyl, wood, and metal fencing while clearing out packed gutters and brightening fascia boards. A full exterior refresh in a single visit.</p>
+          <button class="service-link" onclick="openQuote()">Get a Quote →</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img-wrap">
+          <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&q=80" alt="Germophobes pressure washing team at work in Charlotte NC">
+          <div class="about-badge">
+            <div class="about-badge-num">12+</div>
+            <div class="about-badge-text">Years Serving<br>Charlotte</div>
+          </div>
+        </div>
+        <div class="about-text">
+          <div class="section-tag">About Germophobes</div>
+          <h2 class="section-title">Charlotte's Clean Team Since 2012</h2>
+          <p>Germophobes was founded right here in Charlotte with one mission: to deliver the kind of deep, thorough clean that makes your property look like it was just built. We're not afraid of the toughest grime — in fact, that's what gets us out of bed in the morning.</p>
+          <p>Our fully licensed and insured team uses professional-grade equipment paired with eco-safe cleaning solutions that protect your landscaping, your family, and the environment. Every job is backed by our satisfaction guarantee — we don't leave until you love the results.</p>
+          <ul class="about-bullets">
+            <li>Licensed & Fully Insured — Zero Liability to You</li>
+            <li>Eco-Safe, Biodegradable Cleaning Agents</li>
+            <li>Transparent Flat-Rate Pricing — No Hidden Fees</li>
+            <li>Same-Week Scheduling Available</li>
+            <li>100% Satisfaction Guarantee on Every Job</li>
+          </ul>
+          <button class="btn-primary" onclick="openQuote()">Schedule Your Service Today</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews">
+    <div class="section-inner">
+      <div class="section-tag">Customer Reviews</div>
+      <h2 class="section-title" style="color
